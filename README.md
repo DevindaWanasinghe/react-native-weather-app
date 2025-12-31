@@ -1,4 +1,9 @@
-# Welcome to your Expo app 👋
+# Welcome to Sri Lanka Weather app 👋
+This is my project(Lab -05) Repository Link: 
+
+  ```bash
+   https://github.com/DevindaWanasinghe/react-native-weather-app.git
+   ```
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
