@@ -6,11 +6,13 @@ import WeatherDetails from "../components/WeatherDetails";
 import { cityCoordinates } from "../utils/constants";
 import { WeatherData } from "../utils/types";
 
+// Main Component
 export default function WeatherApp() {
     const [city, setCity] = useState('Colombo');
     const [weather, setWeather] = useState<WeatherData | null>(null);
     const [loading, setLoading] = useState(false);
 
+    //fetch weather data
     const fetchWeather = async () => {
         try {
             setLoading(true);
@@ -34,26 +36,27 @@ export default function WeatherApp() {
     };
 
 
+    //fetch wether when city change
     useEffect(() => {
         fetchWeather();
     }, [city]);
 
 
-
-
     return (
         <ScrollView style={styles.container} >
             <View style={styles.content} >
-                <Text style={styles.title}> Sri Lanka Weather App </Text>
+                <View style={styles.header}>
+                    <Text style={styles.title}> Sri Lanka Weather App </Text>
+                </View>
 
                 <CityPicker selectedCity={city} onCityChange={setCity} />
 
                 {loading ? (
-                    <ActivityIndicator size="large" color="#3498db" style={styles.loader} />
+                    <ActivityIndicator size="large" color="#2980b9" style={styles.loader} />
                 ) : weather ? (
                     <WeatherDetails weather={weather} city={city} />
                 ) : ( 
-                    <Text style={styles.errorText}> No weather data available. </Text> 
+                    <Text style={styles.errorText}> No weather data available! </Text> 
                 
                 )}
                 
@@ -64,27 +67,29 @@ export default function WeatherApp() {
 }
 
 
-
-
-
+//styles for app.tsx
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f6fa',
+        backgroundColor: '#def3f9ff',
     },
     content: {
         padding: 20,
         paddingTop: 60,
     },
+    header: {
+        alignItems: "center",
+        marginBottom: 25,
+    },
     title: {
-        fontSize: 32,
+        fontSize: 34,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
-        color: '#2c3e50',
+        color: '#0b355eff',
     },
     loader: {
-        marginTop: 50,
+        marginTop: 40,
     },
     errorText: {
         textAlign: 'center',
